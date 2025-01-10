@@ -1,3 +1,11 @@
 /* .right-side-bar {
   color: red;
 } */
+
+.multi-line-truncated-text {
+  display: -webkit-box;
+  line-clamp: 7; /* Adjust the number of lines you want to show */
+  -webkit-line-clamp: 7; /* Adjust the number of lines you want to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
