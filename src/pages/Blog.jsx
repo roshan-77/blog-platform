@@ -54,6 +54,7 @@ const Blog = () => {
         variant="outlined"
         color="primary"
         name="Create"
+        style={""}
         onClick={handleOpenModal}
       />
       {open && (

@@ -19,6 +19,17 @@ body {
   display: none;
 }
 
+.card-footer {
+  display: flex;
+  align-content: center;
+  padding: 0 0.5rem;
+  justify-content: left;
+}
+
+.card-footer > span {
+  padding: 0 0.3rem;
+}
+
 .multi-line-truncated-text {
   display: -webkit-box;
   line-clamp: 7; /* Adjust the number of lines you want to show */

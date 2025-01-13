@@ -24,10 +24,12 @@ const SearchBar = () => {
         ),
       }}
       sx={{
-        width: { xs: "100%", sm: "300px" }, // Responsive width
+        width: { xs: "100%", sm: "500px" }, // Responsive width
         margin: "16px auto", // Spacing
         backgroundColor: "#fff", // Optional for contrast
-        borderRadius: "4px",
+        "& .MuiOutlinedInput-root": {
+          borderRadius: "30px",
+        },
       }}
     />
   );

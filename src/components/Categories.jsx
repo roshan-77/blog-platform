@@ -10,6 +10,7 @@ const Categories = ({ categories }) => {
     margin: ".3rem",
     fontSize: ".7rem",
     padding: ".4rem 3rem",
+    fontWeight: "bold",
   };
 
   return (
@@ -21,18 +22,13 @@ const Categories = ({ categories }) => {
         justifyContent: "start",
         width: "100%",
         overflowX: "scroll",
-        paddingRight: "1.5rem",
+        // paddingRight: "1.5rem",
         alignItems: "center",
       }}
     >
       {categories.map((category, index) => {
         return (
-          <MyButton
-            id={index}
-            variant="outlined"
-            name={category}
-            style={styles}
-          />
+          <MyButton id={index} variant="outlined" name={category} style={""} />
         );
       })}
     </div>
