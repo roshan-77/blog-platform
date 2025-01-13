@@ -2,6 +2,23 @@
   color: red;
 } */
 
+*,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: black;
+}
+
+.categories::-webkit-scrollbar {
+  display: none;
+}
+
 .multi-line-truncated-text {
   display: -webkit-box;
   line-clamp: 7; /* Adjust the number of lines you want to show */

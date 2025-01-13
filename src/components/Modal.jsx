@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import { styled } from "@mui/material/styles";
 import {
@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 
 import CloseIcon from "@mui/icons-material/Close";
+import SnackBar from "./SnackBar";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -35,6 +36,31 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 const Modal = ({ status, state, handleUpdateContent }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [rows, setRows] = useState(10);
+
+  // Handle window resizing
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 600 && window.innerHeight < 700) {
+        setRows(8); // Fewer rows on smaller screens (mobile)
+      } else if (window.innerWidth < 600) {
+        setRows(15); // Fewer rows on smaller screens (mobile)
+      } else if (window.innerWidth < 900) {
+        setRows(12); // Default rows for medium-sized screens (tablets)
+      } else {
+        setRows(10); // More rows for larger screens (desktop)
+      }
+    };
+
+    // Attach the resize event listener
+    window.addEventListener("resize", handleResize);
+
+    // Trigger the resize handler immediately to set initial rows on component mount
+    handleResize();
+
+    // Cleanup the event listener on unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleSaveChanges = () => {
     handleUpdateContent(title, content);
@@ -81,12 +107,13 @@ const Modal = ({ status, state, handleUpdateContent }) => {
             label="Title"
             fullWidth
             onChange={handleChange}
+            sx={{ paddingBottom: "2rem" }}
           ></TextField>
           <TextField
             name="content"
             fullWidth
             multiline
-            rows={9}
+            rows={rows}
             onChange={handleChange}
           ></TextField>
         </DialogContent>

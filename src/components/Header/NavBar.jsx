@@ -1,22 +1,30 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import NavItem from "./NavItem";
+import List from "@mui/joy/List";
+import ListItem from "@mui/joy/ListItem";
+import ListItemContent from "@mui/joy/ListItemContent";
+import ListItemButton from "@mui/joy/ListItemButton";
+import ListItemDecorator from "@mui/joy/ListItemDecorator";
+import { HomeRounded } from "@mui/icons-material";
+import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
+import BookIcon from "@mui/icons-material/Book";
+import ConnectWithoutContactIcon from "@mui/icons-material/ConnectWithoutContact";
+import MenuIcon from "@mui/icons-material/Menu";
+import { Collapse, Typography } from "@mui/material";
+import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 
 const NavBar = () => {
   const navItems = [
-    { path: "/", label: "Home" },
-    { path: "/about", label: "About" },
-    { path: "/blog", label: "Blog" },
-    { path: "/contact", label: "Contact" },
+    { path: "/", label: "Home", icon: <HomeRounded /> },
+    { path: "/about", label: "About", icon: <AlternateEmailIcon /> },
+    { path: "/blog", label: "Blog", icon: <BookIcon /> },
+    { path: "/contact", label: "Contact", icon: <ConnectWithoutContactIcon /> },
   ];
 
   return (
-    <nav>
-      <ul>
-        {navItems.map((item, index) => (
-          <NavItem key={index} path={item.path} label={item.label} />
-        ))}
-      </ul>
-    </nav>
+    <>
+      <NavItem navItems={navItems} />
+    </>
   );
 };
 

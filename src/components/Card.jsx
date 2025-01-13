@@ -26,9 +26,13 @@ const Card = ({ content }) => {
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1-content"
           id="panel1-header"
+          aria-label="Expand"
         >
-          <Typography component="span">{content.title}</Typography>
+          <Typography component="span" sx={{ fontWeight: "bold" }}>
+            {content.title}
+          </Typography>
         </AccordionSummary>
+        <Divider />
         <AccordionDetails>
           <Typography className="multi-line-truncated-text">
             {content.content}
@@ -39,6 +43,7 @@ const Card = ({ content }) => {
           variant="outlined"
           name="Read More"
           onClick={handleExpandBlog}
+          myButtonStyles={{ margin: "5px" }}
         />
       </Accordion>
       <FullScreenModal
