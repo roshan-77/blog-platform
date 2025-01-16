@@ -12,13 +12,19 @@ import ConnectWithoutContactIcon from "@mui/icons-material/ConnectWithoutContact
 import MenuIcon from "@mui/icons-material/Menu";
 import { Collapse, Typography } from "@mui/material";
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
+import { Avatar } from "@mui/material";
 
 const NavBar = () => {
   const navItems = [
     { path: "/", label: "Home", icon: <HomeRounded /> },
-    { path: "/about", label: "About", icon: <AlternateEmailIcon /> },
+    // { path: "/about", label: "About", icon: <AlternateEmailIcon /> },
     { path: "/blog", label: "Blog", icon: <BookIcon /> },
     { path: "/contact", label: "Contact", icon: <ConnectWithoutContactIcon /> },
+    {
+      path: "/profile",
+      label: "Profile",
+      icon: <Avatar sx={{ height: "24px", width: "24px" }} />,
+    },
   ];
 
   return (

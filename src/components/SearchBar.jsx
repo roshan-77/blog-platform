@@ -29,6 +29,7 @@ const SearchBar = () => {
         backgroundColor: "#fff", // Optional for contrast
         "& .MuiOutlinedInput-root": {
           borderRadius: "30px",
+          margin: " 0 1rem ",
         },
       }}
     />

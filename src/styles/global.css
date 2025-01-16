@@ -9,13 +9,17 @@ body {
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "cursive";
   font-size: 16px;
   line-height: 1.5;
   color: black;
 }
 
 .categories::-webkit-scrollbar {
+  display: none;
+}
+
+.full-screen-modal::-webkit-scrollbar {
   display: none;
 }
 
@@ -32,8 +36,8 @@ body {
 
 .multi-line-truncated-text {
   display: -webkit-box;
-  line-clamp: 7; /* Adjust the number of lines you want to show */
-  -webkit-line-clamp: 7; /* Adjust the number of lines you want to show */
+  line-clamp: 3; /*Adjust the number of lines you want to show */
+  -webkit-line-clamp: 3; /* Adjust the number of lines you want to show */
   -webkit-box-orient: vertical;
   overflow: hidden;
 }

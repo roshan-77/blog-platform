@@ -9,7 +9,7 @@ function Home() {
   const categories = [
     "All",
     "React",
-    "JavaScript",
+    "Software Development",
     "Python",
     "Java",
     "CSS",
@@ -33,18 +33,32 @@ function Home() {
     "CSS",
   ];
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
-    <div style={{ margin: "20px 15px" }}>
+    <div
+      style={{
+        margin: "1rem auto",
+        // padding: "0 1rem",
+        width: isMobile ? "100vw" : "1000px",
+      }}
+    >
       <div
+        className="searchbar-categories"
         style={
           !isMobile
             ? { display: "flex", justifyContent: "space-between" }
             : { display: "block" }
         }
       >
-        <div className="search-bar" style={{ paddingRight: "5px" }}>
+        <div
+          className="search-bar"
+          style={{
+            paddingRight: "5px",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
           <SearchBar />
         </div>
         <Categories categories={categories} />

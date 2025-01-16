@@ -6,7 +6,7 @@ import { CircularProgress } from "@mui/material";
 import SnackBar from "../components/SnackBar";
 const Modal = lazy(() => import("../components/Modal"));
 
-const Blog = () => {
+const Blog = ({ isMobile }) => {
   const [open, setOpen] = useState(false);
   const [titleContent, setTitleContent] = useState([]);
   const [loadSnackBar, setLoadSnackBar] = useState(false);
@@ -48,8 +48,14 @@ const Blog = () => {
   };
 
   return (
-    <div>
-      <h1>Blogs</h1>
+    <div
+      style={{
+        margin: "1rem auto",
+        // padding: "0 1rem",
+        width: isMobile ? "90vw" : "1000px",
+      }}
+    >
+      <h1>Your Blogs</h1>
       <MyButton
         variant="outlined"
         color="primary"
@@ -57,7 +63,7 @@ const Blog = () => {
         style={""}
         onClick={handleOpenModal}
       />
-      {open && (
+      {open && ( //This is lazy loading
         <Suspense
           fallback={
             <div

@@ -22,7 +22,6 @@ const Categories = ({ categories }) => {
         justifyContent: "start",
         width: "100%",
         overflowX: "scroll",
-        // paddingRight: "1.5rem",
         alignItems: "center",
       }}
     >
