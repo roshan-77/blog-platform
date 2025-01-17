@@ -2,8 +2,16 @@ import { BorderColor, Margin } from "@mui/icons-material";
 import MyButton from "./Button/MyButton";
 import { withTheme } from "@emotion/react";
 import { colors } from "@mui/material";
+import { useState } from "react";
 
-const Categories = ({ categories }) => {
+const Categories = ({ categories, handleBlogToRender }) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleRender = (category, index) => {
+    handleBlogToRender(category);
+    setActiveIndex(index);
+  };
+
   const styles = {
     color: "black",
     borderRadius: "20px",
@@ -27,7 +35,13 @@ const Categories = ({ categories }) => {
     >
       {categories.map((category, index) => {
         return (
-          <MyButton id={index} variant="outlined" name={category} style={""} />
+          <MyButton
+            id={index}
+            variant={activeIndex === index ? "contained" : "outlined"}
+            name={category}
+            style={""}
+            onClick={() => handleRender(category, index)}
+          />
         );
       })}
     </div>
