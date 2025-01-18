@@ -15,6 +15,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useMediaQuery, useTheme } from "@mui/material";
 import { Avatar } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import GetDate from "./GetDate";
 
 const Card = ({ content }) => {
   const [expandBlog, setExpandBlog] = useState(false);
@@ -118,7 +119,7 @@ const Card = ({ content }) => {
         <AccordionDetails sx={{ display: "flex", alignItems: "center" }}>
           <div className="card-footer">
             <EditCalendarIcon></EditCalendarIcon>
-            <span>Jan 13, 2025</span>
+            <GetDate />
           </div>
           <div className="card-footer" onClick={handleLike}>
             {isLiked ? (
