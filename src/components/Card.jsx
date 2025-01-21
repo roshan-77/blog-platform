@@ -119,7 +119,7 @@ const Card = ({ content }) => {
         <AccordionDetails sx={{ display: "flex", alignItems: "center" }}>
           <div className="card-footer">
             <EditCalendarIcon></EditCalendarIcon>
-            <GetDate />
+            {content.date}
           </div>
           <div className="card-footer" onClick={handleLike}>
             {isLiked ? (

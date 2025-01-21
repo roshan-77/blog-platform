@@ -13,6 +13,7 @@ import {
 
 import CloseIcon from "@mui/icons-material/Close";
 import SnackBar from "./SnackBar";
+import GetDate from "./GetDate";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -37,6 +38,7 @@ const Modal = ({ status, state, handleUpdateContent }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [rows, setRows] = useState(10);
+  const [date, setDate] = useState("");
 
   // Handle window resizing
   useEffect(() => {
@@ -63,7 +65,8 @@ const Modal = ({ status, state, handleUpdateContent }) => {
   }, []);
 
   const handleSaveChanges = () => {
-    handleUpdateContent(title, content);
+    // setDate();
+    handleUpdateContent(title, content, GetDate());
     state();
     setTitle("");
     setContent("");

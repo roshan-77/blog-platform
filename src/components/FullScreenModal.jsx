@@ -94,7 +94,7 @@ const FullScreenModal = ({
             Roshan Khadka
             <div className="card-footer">
               <EditCalendarIcon></EditCalendarIcon>
-              <span>Jan 13, 2025</span>
+              <span>{content.date}</span>
             </div>
           </Typography>
           <Divider />
