@@ -37,6 +37,8 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 const Modal = ({ status, state, handleUpdateContent }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [comments, setComments] = useState("");
+
   const [rows, setRows] = useState(10);
   const [date, setDate] = useState("");
 
@@ -66,7 +68,7 @@ const Modal = ({ status, state, handleUpdateContent }) => {
 
   const handleSaveChanges = () => {
     // setDate();
-    handleUpdateContent(title, content, GetDate());
+    handleUpdateContent(title, content, GetDate(), comments);
     state();
     setTitle("");
     setContent("");

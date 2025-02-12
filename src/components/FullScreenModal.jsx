@@ -1,4 +1,4 @@
-import { useState, forwardRef } from "react";
+import { useState, forwardRef, useContext } from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import ListItemText from "@mui/material/ListItemText";
@@ -19,6 +19,7 @@ import EditCalendarIcon from "@mui/icons-material/EditCalendar";
 import CommentBox from "./CommentBox";
 import CommentCard from "./CommentCard.jsx";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { UserContext } from "../context/UserContext.jsx";
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -33,10 +34,21 @@ const FullScreenModal = ({
   likeCount,
   isLiked,
 }) => {
+  const name = useContext(UserContext);
+  const [comment, setComment] = useState(content.comments);
   const [commentText, setCommentText] = useState(null);
 
   const handleCommentText = (text) => {
-    setCommentText(text);
+    setComment((prevVal) => {
+      return [
+        ...prevVal,
+        {
+          commentUserName: name,
+          commentCreatedDate: "12 Feb 2025",
+          commentContent: text,
+        },
+      ];
+    });
   };
 
   return (
@@ -121,7 +133,11 @@ const FullScreenModal = ({
             <CommentBox handleCommentText={handleCommentText} />
           </div>
           <div>
-            <CommentCard commentText={commentText} />
+            {comment &&
+              comment.length > 0 &&
+              comment.map((comment) => (
+                <CommentCard commentContents={comment} />
+              ))}
           </div>
         </div>
       </Dialog>

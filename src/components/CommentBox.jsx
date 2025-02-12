@@ -19,13 +19,16 @@ const CommentBox = ({ handleCommentText }) => {
   const [fontWeight, setFontWeight] = React.useState("normal");
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [comment, setComment] = useState(null);
+  const [commentAlertMessage, setCommentAlertMessage] = useState(false);
 
   const handleCommentChange = (event) => {
+    comment && setCommentAlertMessage(false);
     setComment(event.target.value);
   };
 
   const handleSend = () => {
-    handleCommentText(comment);
+    comment && handleCommentText(comment);
+    !comment && setCommentAlertMessage(true);
     setComment("");
   };
 
@@ -93,6 +96,9 @@ const CommentBox = ({ handleCommentText }) => {
             >
               <FormatItalic />
             </IconButton>
+            {commentAlertMessage && (
+              <div style={{ color: "red" }}>Please add a comment</div>
+            )}
             <Button sx={{ ml: "auto" }} onClick={handleSend}>
               Send
             </Button>

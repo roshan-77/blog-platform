@@ -12,7 +12,7 @@ const Blog = ({ isMobile }) => {
   const [loadSnackBar, setLoadSnackBar] = useState(false);
   const [snackbarAlertProps, setsnackbarAlertProps] = useState({});
 
-  const handleUpdateContent = (title, content, date) => {
+  const handleUpdateContent = (title, content, date, comments) => {
     if (title === "" || content === "") {
       setsnackbarAlertProps({
         severity: "error",
@@ -30,7 +30,7 @@ const Blog = ({ isMobile }) => {
       if (title === "" || content === "") {
         return [...prevVals];
       } else {
-        return [...prevVals, { title, content, date }];
+        return [...prevVals, { title, content, date, comments }];
       }
     });
   };

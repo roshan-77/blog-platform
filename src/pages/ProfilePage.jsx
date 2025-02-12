@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   Box,
   Typography,
@@ -10,9 +10,11 @@ import {
   IconButton,
 } from "@mui/material";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
+import { UserContext } from "../context/UserContext";
 
 const ProfilePage = () => {
-  const [name, setName] = useState("John Doe");
+  const names = useContext(UserContext);
+  const [name, setName] = useState(names);
   const [email, setEmail] = useState("john.doe@example.com");
   const [bio, setBio] = useState(
     "Full Stack Developer passionate about building amazing applications."

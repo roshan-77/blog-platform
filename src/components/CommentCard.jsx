@@ -2,7 +2,7 @@ import { Card } from "@mui/material";
 import { CardContent, Typography, TextField } from "@mui/material";
 import { Avatar } from "@mui/material";
 
-const CommentCard = ({ commentText }) => {
+const CommentCard = ({ commentContents }) => {
   return (
     <div style={{ padding: "1rem 0", borderRadius: "2rem" }}>
       <Card sx={{ paddingBottom: "0px" }}>
@@ -28,13 +28,17 @@ const CommentCard = ({ commentText }) => {
               src="/static/images/avatar/1.jpg"
             />
             <div>
-              <Typography sx={{ fontWeight: "bold" }}>Roshan Khadka</Typography>
-              <Typography sx={{ fontSize: ".9rem" }}>15 Jan, 2025</Typography>
+              <Typography sx={{ fontWeight: "bold" }}>
+                {commentContents.commentUserName}
+              </Typography>
+              <Typography sx={{ fontSize: ".9rem" }}>
+                {commentContents.commentCreatedDate}
+              </Typography>
             </div>
           </CardContent>
 
           <Typography sx={{ margin: ".5rem .5rem 0 .7rem" }}>
-            {commentText}
+            {commentContents.commentContent}
           </Typography>
         </CardContent>
       </Card>
