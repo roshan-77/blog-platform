@@ -1,14 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TextField, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import contents from "../contents";
+import FullScreenModal from "./FullScreenModal";
 
-const SearchBar = () => {
+const SearchBar = ({ getQueryBlogs }) => {
   const [query, setQuery] = useState("");
+  const [filteredBlogs, setFilteredBlogs] = useState([]);
+
+  useEffect(() => {
+    if (query === "") {
+      setFilteredBlogs([]);
+      return;
+    }
+    const filteredContents = contents.filter((content) => {
+      return (
+        content.title.toLowerCase().includes(query.toLowerCase()) ||
+        content.category.toLowerCase().includes(query.toLowerCase())
+      );
+    });
+    setFilteredBlogs(filteredContents);
+  }, [query]);
 
   const handleSearchChange = (event) => {
     setQuery(event.target.value);
     console.log("Search query:", event.target.value); // For debugging or API calls
   };
+
+  useEffect(() => {
+    getQueryBlogs(filteredBlogs);
+  }, [getQueryBlogs, filteredBlogs]);
 
   return (
     <div
@@ -59,11 +80,15 @@ const SearchBar = () => {
           // transform: "translate(-50%, 50%)",
         }}
       >
-        <div>{query}</div>
-        <div>{query}</div>
-        <div>{query}</div>
-        <div>{query}</div>
-        <div>{query}</div>
+        {filteredBlogs.map((blog) => {
+          return (
+            <>
+              {/* <div>{blog.title}</div> */}
+              {/* <FullScreenModal content={blog} /> */}
+            </>
+          );
+        })}
+        <div>{filteredBlogs.length + " search results found."}</div>
       </div>
     </div>
   );

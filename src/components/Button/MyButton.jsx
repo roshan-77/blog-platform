@@ -1,4 +1,6 @@
 import { Button } from "@mui/material";
+import { useContext } from "react";
+import { ButtonContext } from "../../context/ButtonContext";
 
 const MyButton = ({
   variant,
@@ -19,17 +21,33 @@ const MyButton = ({
     fontWeight: "bold",
     minWidth: "auto",
   };
+  const status = useContext(ButtonContext);
 
   return (
-    <Button
-      variant={variant}
-      color={color}
-      onClick={onClick}
-      sx={style === "" ? defaultStyle : style}
-    >
-      {name}
-      {icon}
-    </Button>
+    <>
+      {status === "disabled" ? (
+        <Button
+          variant={variant}
+          color={color}
+          onClick={onClick}
+          sx={style === "" ? defaultStyle : style}
+          disabled
+        >
+          {name}
+          {icon}
+        </Button>
+      ) : (
+        <Button
+          variant={variant}
+          color={color}
+          onClick={onClick}
+          sx={style === "" ? defaultStyle : style}
+        >
+          {name}
+          {icon}
+        </Button>
+      )}
+    </>
   );
 };
 
