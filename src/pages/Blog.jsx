@@ -11,6 +11,7 @@ const Blog = ({ isMobile }) => {
   const [titleContent, setTitleContent] = useState([]);
   const [loadSnackBar, setLoadSnackBar] = useState(false);
   const [snackbarAlertProps, setsnackbarAlertProps] = useState({});
+  // const [comments, setComments] = useState([]);
 
   const handleUpdateContent = (title, content, date, comments) => {
     if (title === "" || content === "") {
@@ -30,7 +31,10 @@ const Blog = ({ isMobile }) => {
       if (title === "" || content === "") {
         return [...prevVals];
       } else {
-        return [...prevVals, { title, content, date, comments }];
+        return [
+          ...prevVals,
+          { title, content, createdDate: date, comments: [], likeCount: 0 },
+        ];
       }
     });
   };

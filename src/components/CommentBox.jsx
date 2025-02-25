@@ -100,7 +100,7 @@ const CommentBox = ({ handleCommentText }) => {
               <div style={{ color: "red" }}>Please add a comment</div>
             )}
             <Button sx={{ ml: "auto" }} onClick={handleSend}>
-              Send
+              Add
             </Button>
           </Box>
         }

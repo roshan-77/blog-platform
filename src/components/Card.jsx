@@ -19,8 +19,8 @@ import GetDate from "./GetDate";
 
 const Card = ({ content }) => {
   const [expandBlog, setExpandBlog] = useState(false);
-  const [commentCount, setCommentCount] = useState(0);
-  const [likeCount, setLikeCount] = useState(0);
+  const [commentCount, setCommentCount] = useState(content.comments.length);
+  const [likeCount, setLikeCount] = useState(content.likeCount);
   const [isLiked, setIsLiked] = useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -28,6 +28,10 @@ const Card = ({ content }) => {
   const handleLike = (e) => {
     setIsLiked(!isLiked);
     !isLiked ? setLikeCount(likeCount + 1) : setLikeCount(likeCount - 1);
+  };
+
+  const handleComment = (comments) => {
+    setCommentCount(comments.length);
   };
 
   const handleExpandBlog = (event) => {
@@ -119,7 +123,7 @@ const Card = ({ content }) => {
         <AccordionDetails sx={{ display: "flex", alignItems: "center" }}>
           <div className="card-footer">
             <EditCalendarIcon></EditCalendarIcon>
-            {content.date}
+            {content.createdDate}
           </div>
           <div className="card-footer" onClick={handleLike}>
             {isLiked ? (
@@ -142,7 +146,9 @@ const Card = ({ content }) => {
         isMobile={isMobile}
         handleLike={handleLike}
         likeCount={likeCount}
+        commentCount={commentCount}
         isLiked={isLiked}
+        handleComment={handleComment}
       />
     </div>
   );

@@ -1,4 +1,4 @@
-import { useState, forwardRef, useContext } from "react";
+import { useState, forwardRef, useContext, useEffect } from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import ListItemText from "@mui/material/ListItemText";
@@ -20,6 +20,7 @@ import CommentBox from "./CommentBox";
 import CommentCard from "./CommentCard.jsx";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { UserContext } from "../context/UserContext.jsx";
+import GetDate from "./GetDate.jsx";
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -32,7 +33,9 @@ const FullScreenModal = ({
   isMobile,
   handleLike,
   likeCount,
+  commentCount,
   isLiked,
+  handleComment,
 }) => {
   const name = useContext(UserContext);
   const [comment, setComment] = useState(content.comments);
@@ -44,12 +47,14 @@ const FullScreenModal = ({
         ...prevVal,
         {
           commentUserName: name,
-          commentCreatedDate: "12 Feb 2025",
+          commentCreatedDate: GetDate(),
           commentContent: text,
         },
       ];
     });
   };
+
+  useEffect(() => handleComment(comment), [comment]);
 
   return (
     <div className="full-screen-modal">
@@ -106,7 +111,7 @@ const FullScreenModal = ({
             Roshan Khadka
             <div className="card-footer">
               <EditCalendarIcon></EditCalendarIcon>
-              <span>{content.date}</span>
+              <span>{content.createdDate}</span>
             </div>
           </Typography>
           <Divider />
@@ -121,7 +126,7 @@ const FullScreenModal = ({
             </div>
             <div className="card-footer">
               <CommentIcon></CommentIcon>
-              <span>{0}</span>
+              <span>{comment.length}</span>
             </div>
           </div>
           <Divider />
@@ -129,7 +134,7 @@ const FullScreenModal = ({
             {content.content}
           </Typography>
           <Divider />
-          <div>
+          <div style={{ paddingBottom: "1rem" }}>
             <CommentBox handleCommentText={handleCommentText} />
           </div>
           <div>

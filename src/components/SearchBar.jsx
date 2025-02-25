@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { TextField, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import contents from "../contents";
-import FullScreenModal from "./FullScreenModal";
 
 const SearchBar = ({ getQueryBlogs }) => {
   const [query, setQuery] = useState("");
@@ -15,8 +14,8 @@ const SearchBar = ({ getQueryBlogs }) => {
     }
     const filteredContents = contents.filter((content) => {
       return (
-        content.title.toLowerCase().includes(query.toLowerCase()) ||
-        content.category.toLowerCase().includes(query.toLowerCase())
+        content.title.toLowerCase().includes(query.toLowerCase().trim()) ||
+        content.category.toLowerCase().includes(query.toLowerCase().trim())
       );
     });
     setFilteredBlogs(filteredContents);
